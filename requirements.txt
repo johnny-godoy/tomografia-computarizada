@@ -2,5 +2,5 @@ jupyter==1.0.0
 matplotlib==3.5.2
 numpy==1.22.3
 perlin-numpy==0.0.0
-scikit-learn==1.1.0
+scikit-image==0.19.3
 tabulate==0.8.9
