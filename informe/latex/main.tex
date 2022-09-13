@@ -1,0 +1,78 @@
+% Template:     Informe LaTeX
+% Documento:    Archivo principal
+% Versión:      8.1.3 (25/04/2022)
+% Codificación: UTF-8
+%
+% Autor: Pablo Pizarro R.
+%        pablo@ppizarror.com
+%
+% Manual template: [https://latex.ppizarror.com/informe]
+% Licencia MIT:    [https://opensource.org/licenses/MIT]
+
+% CREACIÓN DEL DOCUMENTO
+\documentclass[
+	spanish, % Idioma: spanish, english, etc.
+	letterpaper, oneside
+]{article}
+
+% INFORMACIÓN DEL DOCUMENTO
+\def\documenttitle {Tarea 1}
+\def\documentsubtitle {Introducción a los Problemas Inversos}
+\def\documentsubject {Ejemplo de un problema inverso}
+
+\def\documentauthor {Johnny Godoy}
+\def\coursename {Problemas Inversos y de Control de EDP}
+\def\coursecode {MA5306}
+
+\def\universityname {Universidad de Chile}
+\def\universityfaculty {Facultad de Ciencias Físicas y Matemáticas}
+\def\universitydepartment {Departamento de Ingeniería Matemática}
+\def\universitydepartmentimage {departamentos/dim}
+\def\universitydepartmentimagecfg {height=1.57cm}
+\def\universitylocation {Santiago de Chile}
+
+% INTEGRANTES, PROFESORES Y FECHAS
+\def\authortable {
+\begin{tabular}{ll}
+	Alumno:
+	& \begin{tabular}[t]{l}
+		Johnny Godoy
+	\end{tabular} \\
+	Profesor:
+	& \begin{tabular}[t]{l}
+		Axel Osses A.
+	\end{tabular} \\
+	Auxiliar:
+	& \begin{tabular}[t]{l}
+		Jorge Aguayo
+	\end{tabular} \\
+\end{tabular}
+}
+
+% IMPORTACIÓN DEL TEMPLATE
+\input{template}
+
+% INICIO DE PÁGINAS
+\begin{document}
+	
+% PORTADA
+\templatePortrait
+
+% CONFIGURACIÓN DE PÁGINA Y ENCABEZADOS
+\templatePagecfg
+
+% RESUMEN O ABSTRACT
+
+
+% TABLA DE CONTENIDOS - ÍNDICE
+
+
+% CONFIGURACIONES FINALES
+\templateFinalcfg
+
+% ======================= INICIO DEL DOCUMENTO =======================
+
+\input{example} % Ejemplo, se puede borrar
+
+% FIN DEL DOCUMENTO
+\end{document}
