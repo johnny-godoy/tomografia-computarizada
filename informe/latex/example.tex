@@ -24,7 +24,7 @@ Más concretamente, podemos parametrizar $L$ según:
 L_{t, \theta} = \{x\in\R^2: \langle x, n_\theta\rangle = t\}
 \]
 
-Donde $n_\theta = (\cos(\theta), \sin(\theta))$. Esto nos da permite ver la tranformada como $R: L^1(\R)\to L^1(S^1\times \R)$, con la siguiente expresión:
+Donde $n_\theta = (\cos(\theta), \sin(\theta))$. Esto nos permite ver la tranformada como $R: L^1(\R)\to L^1(S^1\times \R)$, con la siguiente expresión:
 
 
 \[
@@ -108,7 +108,7 @@ Incluyo simulaciones en Python de una reconstrucción con la siguiente metodolog
     \item Calcular la transformada de Radon con el módulo \textit{scikit-image} \citep{scikit-image}
     \item Recuperar la imagen inicial resolviendo el problema de optimización antes mostrado (sin regularización) y con el método de transformada de Radon inversa de \textit{scikit-image} para comparar estos métodos
     \item Agregar ruido de alta frecuencia y baja amplitud a las transformadas
-    \item Comparar de nuevo las metodologías, agregando optimización regularizada
+    \item Comparar de nuevo los algoritmos, agregando optimización regularizada
 \end{itemize}
 \begin{figure}\centering
 \subfloat[Densidad generada con ruido de Perlin, a reconstruir]{\label{a}\includegraphics[width=.5\linewidth]{img/output/output_11_0.png}}\hfill 
@@ -134,7 +134,7 @@ Luego, se agregó ruido de alta frecuencia a nuestras mediciones:
 \label{fig}
 \end{figure}
 
-Al correr los algoritmos anteriores en este caso, el error de las soluciones se duplica. En el caso de optimización pasa de $2.1\times 10^{-3}$ a $5.23\times 10^{-3}$. Para reducir esto, consideramos el modelo regularizado antes mencionado con $\lambda=2^{-7}$, reduciendo el error a $4.35\times 10^{-3}$:
+Al correr los algoritmos anteriores en este caso, el error de las soluciones se aumenta a más del doble. En el caso de optimización pasa de $2.1\times 10^{-3}$ a $5.23\times 10^{-3}$. Para reducir este error, resolvemos el problema regularizado con $\lambda=2^{-7}$, reduciendo el error a $4.35\times 10^{-3}$:
 
 \begin{figure}
     \centering
@@ -142,8 +142,5 @@ Al correr los algoritmos anteriores en este caso, el error de las soluciones se 
     \caption{Mejorando la estabilidad a través de regularización}
     \label{fig:my_label}
 \end{figure}
-
-
-El repositorio con las simulaciones, y con este informe, se encuentra en \href{https://github.com/johnny-godoy/tomografia-computarizada}{https://github.com/johnny-godoy/tomografia-computarizada}
 \bibliography{library.bib}
  
