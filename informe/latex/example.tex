@@ -106,21 +106,43 @@ Incluyo simulaciones en Python de una reconstrucción con la siguiente metodolog
 \begin{itemize}
     \item Generar una imagen de $16\times 16$ pixeles a través de ruido de Perlin.
     \item Calcular la transformada de Radon con el módulo \textit{scikit-image} \citep{scikit-image}
-    \item Intentar recuperar la imagen inicual resolviendo el problema de optimización antes mostrado (sin regularización)
+    \item Recuperar la imagen inicial resolviendo el problema de optimización antes mostrado (sin regularización) y con el método de transformada de Radon inversa de \textit{scikit-image} para comparar estos métodos
+    \item Agregar ruido de alta frecuencia y baja amplitud a las transformadas
+    \item Comparar de nuevo las metodologías, agregando optimización regularizada
 \end{itemize}
+\begin{figure}\centering
+\subfloat[Densidad generada con ruido de Perlin, a reconstruir]{\label{a}\includegraphics[width=.5\linewidth]{img/output/output_11_0.png}}\hfill 
+\subfloat[Transformada de Radon de la densidad, nuestras mediciones.]{\label{b}\includegraphics[width=.5\linewidth]{img/output/output_13_1.png}}
+\label{fig}
+\end{figure}
+\begin{figure}\centering
+\subfloat[Reconstrucción dada por la inversa de la transformada]{\label{a}\includegraphics[width=.5\linewidth]{img/output/output_22_0.png}}\hfill
+\subfloat[Reconstrucción generada por optimización]{\label{b}\includegraphics[width=.5\linewidth]{img/output/output_19_0.png}}
+\caption{Reconstrucción por distintos algoritmos.}
+\label{fig}
+\end{figure}
+
+Acá la inversión con optimización logró un error de orden $10^{-3}$ en 30 segundos, mientras que la inversión de la transformada logró un error de $10^{-1}$ en 0.5 segundos.
+
+Se intentó utilizar la solución de la transformada como mejor inicialización del optimizador, y aumentar el número de rayos para mejorar la inversión, pero ninguno de estos dos métodos ayudó.
+
+Luego, se agregó ruido de alta frecuencia a nuestras mediciones:
+\begin{figure}\centering
+\subfloat[Ruido agregado a las mediciones]{\label{a}\includegraphics[width=.5\linewidth]{img/output/output_31_0.png}}\hfill
+\subfloat[Mediciones ruidosas]{\label{b}\includegraphics[width=.5\linewidth]{img/output/output_32_0.png}}
+\caption{Ruido de alta frecuencia para probar estabilidad.}
+\label{fig}
+\end{figure}
+
+Al correr los algoritmos anteriores en este caso, el error de las soluciones se duplica. En el caso de optimización pasa de $2.1\times 10^{-3}$ a $5.23\times 10^{-3}$. Para reducir esto, consideramos el modelo regularizado antes mencionado con $\lambda=2^{-7}$, reduciendo el error a $4.35\times 10^{-3}$:
+
 \begin{figure}
     \centering
-    \includegraphics[scale=0.4]{img/simulada.png}
-    \caption{Imagen simulada con ruido de Perlin, a reconstruir}
-    \label{fig:simulada}
+    \includegraphics[width=\linewidth]{img/output/output_41_1.png}
+    \caption{Mejorando la estabilidad a través de regularización}
+    \label{fig:my_label}
 \end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.4]{img/estimada.png}
-    \caption{Imagen reconstruida a partir de trasnformaciones de Radon}
-    \label{fig:estimada}
-\end{figure}
-Se llegó a una solución en 20 segundos. El error cuadrático medio de las transformadas (el valor que se optimizó) es de $10^{-7}$, mientras que el error de las densidades era de $10^{-4}$.
+
 
 El repositorio con las simulaciones, y con este informe, se encuentra en \href{https://github.com/johnny-godoy/tomografia-computarizada}{https://github.com/johnny-godoy/tomografia-computarizada}
 \bibliography{library.bib}
