@@ -197,7 +197,7 @@ ver_imagen(densidades_iradon, r"Densidad estimada con inversa de Radon $\rho(x, 
     
 
 
-El error cuadrático medio aumentó considerablemente a orden $10^{-1}$. Si cabe destacar que el tiempo de ejecución es mucho más veloz.
+El error cuadrático medio aumentó considerablemente a orden $10^{-2}$. Si cabe destacar que el tiempo de ejecución es mucho más veloz.
 
 Agregamos rayos por si esto mejora la solución:
 
@@ -215,7 +215,7 @@ ver_imagen(densidades_iradon_letal, r"Densidad estimada con inversa de Radon $\r
     
 
 
-Parece ser que la implementación de `skimage` asume propiedades del dominio estudiado, como ser 0 fuera del círculo.
+Parece ser que la implementación de `skimage` asume propiedades del dominio estudiado, como tener densidad 0 fuera del círculo.
 
 ## Método híbrido
 
